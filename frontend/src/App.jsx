@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import "./index.css";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://disaster-response-gebm.onrender.com");
 
 export default function App() {
   const [form, setForm] = useState({
@@ -26,7 +26,7 @@ export default function App() {
 
   const fetchDisasters = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/disasters");
+      const res = await fetch("https://disaster-response-gebm.onrender.com/api/disasters");
       const data = await res.json();
       setDisasters(data);
     } catch (err) {
@@ -42,7 +42,7 @@ export default function App() {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/disasters/${disasterId}/reports`);
+      const res = await fetch(`https://disaster-response-gebm.onrender.com/api/disasters/${disasterId}/reports`);
       const data = await res.json();
       setReportMap((prev) => ({ ...prev, [disasterId]: data }));
       setVisibleReports((prev) => ({ ...prev, [disasterId]: true }));
@@ -60,7 +60,7 @@ export default function App() {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/resources?lat=${lat}&lon=${lon}`);
+      const res = await fetch(`https://disaster-response-gebm.onrender.com/api/resources?lat=${lat}&lon=${lon}`);
       const data = await res.json();
       setResourceMap((prev) => ({ ...prev, [id]: data }));
       setVisibleResources((prev) => ({ ...prev, [id]: true }));
@@ -94,8 +94,8 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editingId
-      ? `http://localhost:3000/api/disasters/${editingId}`
-      : "http://localhost:3000/api/disasters";
+      ? `https://disaster-response-gebm.onrender.com/api/disasters/${editingId}`
+      : "https://disaster-response-gebm.onrender.com/api/disasters";
     const method = editingId ? "PUT" : "POST";
 
     try {
@@ -128,7 +128,7 @@ export default function App() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/disasters/${id}`, {
+      const res = await fetch(`https://disaster-response-gebm.onrender.com/api/disasters/${id}`, {
         method: "DELETE",
       });
 
@@ -151,7 +151,7 @@ export default function App() {
     const image_url = formData.get("image_url");
 
     try {
-      const res = await fetch("http://localhost:3000/api/reports", {
+      const res = await fetch("https://disaster-response-gebm.onrender.com/api/reports", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
