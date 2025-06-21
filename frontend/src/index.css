@@ -1,0 +1,233 @@
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 800% 800%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 💾 Form container */
+.container {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  color: inherit;
+  margin-bottom: 2rem; /* Add space before disaster list */
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #c62828;
+}
+
+/* 🧾 Form elements */
+input,
+textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #c62828;
+}
+
+/* 📤 Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #c62828;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #b71c1c;
+}
+
+/* 🌗 Theme toggle button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.theme-toggle:hover {
+  background-color: #555;
+}
+
+/* 🌑 Dark mode overrides */
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark .container {
+  background: rgba(30, 30, 30, 0.9);
+  color: #eee;
+}
+
+body.dark input,
+body.dark textarea {
+  background: #222;
+  color: #eee;
+  border-color: #444;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: #aaa;
+}
+
+body.dark button[type="submit"] {
+  background-color: #ff5252;
+}
+
+body.dark button[type="submit"]:hover {
+  background-color: #ff1744;
+}
+
+/* 🧠 Disaster list grid */
+.disaster-heading {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.75rem;
+  color: #b71c1c;
+}
+
+/* Grid layout */
+.disaster-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/* Disaster card */
+.disaster-card {
+  background: #fff5f5;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.disaster-card:hover {
+  transform: scale(1.02);
+}
+
+.disaster-card h3 {
+  margin-top: 0;
+  color: #c62828;
+}
+
+.disaster-card p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.dark .disaster-card {
+  background: #2b2b2b;
+  border-color: #444;
+  color: #fff;
+}
+
+/* Buttons inside cards */
+.edit-btn,
+.delete-btn {
+  margin-top: 0.5rem;
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #ffc107;
+  color: #000;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+/* 📝 Report form inside details page */
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.report-form input,
+.report-form textarea {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-width: 400px;
+  font-size: 0.9rem;
+}
+
+.report-form button {
+  padding: 6px 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  align-self: center;
+}
